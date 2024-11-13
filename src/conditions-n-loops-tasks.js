@@ -21,8 +21,12 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  const result = String(number).startsWith('-');
+  if (result === true) {
+    return false;
+  }
+  return true;
 }
 
 /**
