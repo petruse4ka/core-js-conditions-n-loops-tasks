@@ -42,8 +42,15 @@ function isPositive(number) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  let result = a;
+  if (b > result) {
+    result = b;
+  }
+  if (c > result) {
+    result = c;
+  }
+  return result;
 }
 
 /**
@@ -64,8 +71,16 @@ function getMaxNumber(/* a, b, c */) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  let result = false;
+  if (
+    queen.x === king.x ||
+    queen.y === king.y ||
+    Math.abs(queen.x - king.x) === Math.abs(queen.y - king.y)
+  ) {
+    result = true;
+  }
+  return result;
 }
 
 /**
@@ -86,8 +101,21 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  let result = false;
+  if (a === 0 || b === 0 || c === 0) {
+    return result;
+  }
+  if (a === b && a + b > c) {
+    result = true;
+  }
+  if (a === c && a + c > b) {
+    result = true;
+  }
+  if (c === b && c + b > a) {
+    result = true;
+  }
+  return result;
 }
 
 /**
@@ -104,8 +132,53 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let romanNumeral = '';
+
+  const firstDigit = Math.floor(num / 10);
+  const secondDigit = num % 10;
+
+  if (firstDigit === 1) {
+    romanNumeral += 'X';
+  } else if (firstDigit === 2) {
+    romanNumeral += 'XX';
+  } else if (firstDigit === 3) {
+    romanNumeral += 'XXX';
+  } else if (firstDigit === 4) {
+    romanNumeral += 'XL';
+  } else if (firstDigit === 5) {
+    romanNumeral += 'L';
+  } else if (firstDigit === 6) {
+    romanNumeral += 'LX';
+  } else if (firstDigit === 7) {
+    romanNumeral += 'LXX';
+  } else if (firstDigit === 8) {
+    romanNumeral += 'LXXX';
+  } else if (firstDigit === 9) {
+    romanNumeral += 'XC';
+  }
+
+  if (secondDigit === 1) {
+    romanNumeral += 'I';
+  } else if (secondDigit === 2) {
+    romanNumeral += 'II';
+  } else if (secondDigit === 3) {
+    romanNumeral += 'III';
+  } else if (secondDigit === 4) {
+    romanNumeral += 'IV';
+  } else if (secondDigit === 5) {
+    romanNumeral += 'V';
+  } else if (secondDigit === 6) {
+    romanNumeral += 'VI';
+  } else if (secondDigit === 7) {
+    romanNumeral += 'VII';
+  } else if (secondDigit === 8) {
+    romanNumeral += 'VIII';
+  } else if (secondDigit === 9) {
+    romanNumeral += 'IX';
+  }
+
+  return romanNumeral;
 }
 
 /**
