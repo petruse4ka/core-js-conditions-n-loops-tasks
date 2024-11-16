@@ -456,8 +456,20 @@ function rotateMatrix(/* matrix */) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr */) {
-  throw new Error('Not implemented');
+function sortByAsc(arr) {
+  const newArray = arr;
+  for (let i = 0; i < newArray.length - 1; i += 1) {
+    let lowestDigitIndex = i;
+    for (let j = i + 1; j < newArray.length; j += 1) {
+      if (newArray[j] < newArray[lowestDigitIndex]) {
+        lowestDigitIndex = j;
+      }
+    }
+    const currentDigit = newArray[i];
+    newArray[i] = newArray[lowestDigitIndex];
+    newArray[lowestDigitIndex] = currentDigit;
+  }
+  return newArray;
 }
 
 /**
