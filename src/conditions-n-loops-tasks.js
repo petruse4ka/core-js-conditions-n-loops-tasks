@@ -550,10 +550,13 @@ function sortByAsc(arr) {
  */
 function shuffleChar(str, iterations) {
   let newString = str;
-  for (let i = 0; i < iterations; i += 1) {
+  const originalString = str;
+  let iter = iterations;
+  let counter = 0;
+  for (let i = 0; i < iter; i += 1) {
     let odd = '';
     let even = '';
-    for (let j = 0; j < newString.length; j += 1) {
+    for (let j = 0; j < str.length; j += 1) {
       if (j % 2 === 0) {
         even += newString[j];
       } else {
@@ -561,6 +564,12 @@ function shuffleChar(str, iterations) {
       }
     }
     newString = even + odd;
+    counter += 1;
+
+    if (newString === originalString) {
+      iter = counter + (iter % counter);
+      counter = 0;
+    }
   }
   return newString;
 }
