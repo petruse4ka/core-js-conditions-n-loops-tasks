@@ -517,17 +517,19 @@ function rotateMatrix(matrix) {
  */
 function sortByAsc(arr) {
   const newArray = arr;
-  for (let i = 0; i < newArray.length - 1; i += 1) {
-    let lowestDigitIndex = i;
-    for (let j = i + 1; j < newArray.length; j += 1) {
-      if (newArray[j] < newArray[lowestDigitIndex]) {
-        lowestDigitIndex = j;
-      }
+
+  for (let i = 0; i < newArray.length; i += 1) {
+    const sortedDigit = newArray[i];
+    let j = i - 1;
+
+    while (j >= 0 && newArray[j] > sortedDigit) {
+      newArray[j + 1] = newArray[j];
+      j -= 1;
     }
-    const currentDigit = newArray[i];
-    newArray[i] = newArray[lowestDigitIndex];
-    newArray[lowestDigitIndex] = currentDigit;
+
+    newArray[j + 1] = sortedDigit;
   }
+
   return newArray;
 }
 
@@ -553,9 +555,11 @@ function shuffleChar(str, iterations) {
   const originalString = str;
   let iter = iterations;
   let counter = 0;
+
   for (let i = 0; i < iter; i += 1) {
     let odd = '';
     let even = '';
+
     for (let j = 0; j < str.length; j += 1) {
       if (j % 2 === 0) {
         even += newString[j];
@@ -563,6 +567,7 @@ function shuffleChar(str, iterations) {
         odd += newString[j];
       }
     }
+
     newString = even + odd;
     counter += 1;
 
@@ -571,6 +576,7 @@ function shuffleChar(str, iterations) {
       counter = 0;
     }
   }
+
   return newString;
 }
 
